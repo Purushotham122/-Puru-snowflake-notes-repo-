@@ -1,0 +1,61 @@
+use hr;
+use hr.vitech;
+show tables;
+select *from persons;
+delete from persons where p_id=4;
+create table orders (o_id int,orderno int,p_id int); 
+
+insert into orders values (1,77895,3),(2,44678,3),(3,22456,1),(4,24562,1),(5,34764,15);
+
+select *from persons;
+
+select *from orders;
+
+select a.*,'|',b.* from persons a,orders b where a.p_id=b.p_id;
+
+select a.last_name,a.address,'|',b.o_id,b.orderno from persons a inner join orders b on a.p_id=b.p_id;
+
+select a.last_name,a.address,'|',b.o_id,b.orderno from persons a left join orders b on a.p_id=b.p_id;
+
+select a.last_name,a.address,'|',b.o_id,b.orderno from persons a right join orders b on a.p_id=b.p_id;
+
+select a.last_name,a.address,'|',b.o_id,b.orderno from persons a full join orders b on a.p_id=b.p_id;
+
+select *from persons union select *from orders;
+
+create table facebook (name varchar(20),location varchar(30));
+
+insert into facebook values('alex','san francisco'),('matt','san francisco'),('zeke','loss angeles');
+
+
+create table linkedin(name varchar(10),location varchar(20));
+
+insert into linkedin values('matt','san francisco'),('rubby','san francisco'),('zeke','loss angeles');
+
+select *from facebook union select *from linkedin;
+
+select *from facebook union all select *from linkedin;
+
+create table facebook1 as(select *from facebook);
+
+select *from facebook1;
+
+create database puru;
+
+create table persons (pid int,lastname varchar(20),firstname varchar(20),address varchar(20),city varchar(20));
+
+
+create table persons1(pid int not null,lastname varchar(20) not null,firstname varchar(20),address varchar(20),city varchar(20));
+
+create table persons2(pid int unique,lastname varchar(20),firstname varchar(20),address varchar(20),city varchar(20));
+
+create table persons3(pid int primary key,lastname varchar(20),firstname varchar(20),address varchar(20),city varchar(20));
+
+
+
+
+create table persons4(pid int check(pid>4),lastname varchar(20),firstname varchar(20),address varchar(20),city varchar(20));
+
+
+create table persons5(pid int default pid=4,lastname varchar(20),firstname varchar(20),address varchar(20),city varchar(20));
+
